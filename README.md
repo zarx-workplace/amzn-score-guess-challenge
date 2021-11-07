@@ -68,7 +68,7 @@ checkout the sourcecode, then `mvn spring-boot:run` using project dir as working
 
 -OR-
 
-download the release artifact and run `java -jar amzn-score-guess-challenge-0.0.1-SNAPSHOT.jar`()
+download the release artifact and run `java -jar amzn-score-guess-challenge-0.0.1-SNAPSHOT.jar`(https://github.com/zarx-workplace/amzn-score-guess-challenge/releases/download/build_1/amzn-score-guess-challenge-0.0.1-SNAPSHOT.jar)
 
 ### to build
 `mvn package`
