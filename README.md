@@ -25,22 +25,22 @@ In the same time task restricts using of prefetched data snapshots, so down belo
 Amazon probably would assume these for the most generic user, suggesting the keywords for the user-input from none to marginal.
 the minimal input Amazon API allows is a single character \[a-z0-9\].
 
-**rule #1**: the highest score keywords come in suggested lists for such input.
+**_rule #1_**: the highest score keywords come in suggested lists for such input.
 #### the never searched keywords / 0 points in score
 Amazon won't index such. Amazon API doesn't suggest the known keyword for the same exact input; To check if the keyword known to Amazon the API should respond with it.
 
-**rule #2**: if Amazon API can suggest a keyword for the same exact input without the last letter - it should score at least 1, otherwise - 0
+**_rule #2_**: if Amazon API can suggest a keyword for the same exact input without the last letter - it should score at least 1, otherwise - 0
 #### what's in-between of 1-99?
 Amazon index would almost certainly be a balanced trie-like structure with weights (say, number of requests led to actual order per period)
 That means competition between suggests closer to the root grows exponentially. This assumption goes with two outcomes:
 
-**rule #3-4**
+**_rule #3-4_**
 - the shorter input prefix required to match a keyword - the bigger should be the score in exponential manner
 - for longer keywords at some point it shouldn't matter whether typing next character will result in suggest match due to insufficient score granularity and marginal score impact.
  
 Checking hottest suggestions (entering 1 letter at a turn) - you can observe, that keyword length varies mostly from 3 to 30.
 Probably that will depend on the language, goods category, time of the year, etc... but.
-**rule #5** let's assume 20 chars matching prefix length as threshold for score impact.
+**_rule #5_** let's assume 20 chars matching prefix length as threshold for score impact.
 
 ### What You have to deliver: How does your algorithm work?
 1. Validate/normalize input.
@@ -56,7 +56,7 @@ Yet I disagree that the list ordering is insignificant. It's just hard to use in
 ### What You have to deliver: How precise do you think your outcome is and why?
 It definitely won't allow to reconstruct suggest-index, but it may help with rough estimations. (why? see the assumption on suggest-index data structure)
 
-### See com.zarx.amznscoreguesschallenge.
+### See com.zarx.amznscoreguesschallenge.KeywordScoringService (https://github.com/zarx-workplace/amzn-score-guess-challenge/blob/main/src/main/java/com/zarx/amznscoreguesschallenge/services/KeywordScoringService.java) for implementation.
 
 ## How to run/build
 Application requires:
@@ -68,7 +68,7 @@ checkout the sourcecode, then `mvn spring-boot:run` using project dir as working
 
 -OR-
 
-download the release artifact and run `java -jar amzn-score-guess-challenge-0.0.1-SNAPSHOT.jar`
+download the release artifact and run `java -jar amzn-score-guess-challenge-0.0.1-SNAPSHOT.jar`()
 
 ### to build
 `mvn package`
