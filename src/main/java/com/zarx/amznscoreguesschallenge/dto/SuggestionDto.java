@@ -23,14 +23,15 @@ public class SuggestionDto {
     private Boolean fallback;
     private Boolean spellCorrected;
 
-    private Map<String, String> unmappedFields = new HashMap<>();
+    private Map<String, Object> unmappedFields = new HashMap<>();
 
     @JsonAnyGetter
-    public Map<String, String> getUnmappedFields() {
+    public Map<String, Object> getUnmappedFields() {
         return unmappedFields;
     }
+
     @JsonAnySetter
-    public void setUnmappedField(String name, String value) {
+    public void setUnmappedField(String name, Object value) {
         this.unmappedFields.put(name, value);
     }
 }
